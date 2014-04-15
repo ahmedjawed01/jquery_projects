@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN"
+“http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>My Test Page</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.colorize-1.7.0.js" ></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+//Your code goes here.
+
+	$('table').colorize();
+
+	$('#click1').click(function () {
+	
+		$('#1').text('New text added');
+		
+	
+
+
+	});
+
+});
+</script>
+</head>
+<body>
+
+<table border=1>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+<tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
+<tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
+<tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+<tr><td>Q</td><td>R</td><td>S</td><td>T</td></tr>
+</table>
+
+
+
+
+
+<div id="1"></div>
+<input id="click1" type="submit" value="click"/>
+
+
+
+</body>
+</html>
