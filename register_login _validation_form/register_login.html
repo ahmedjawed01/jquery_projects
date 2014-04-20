@@ -1,0 +1,269 @@
+
+<html>
+<head>
+<title>Registe Login Form With Validation</title>
+
+
+
+
+<link rel="stylesheet" href="bootstrap.min.css"  media="screen" type="text/css" />
+
+<link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+
+<script src="jquery.js"></script>
+
+
+
+
+
+ <script>
+
+        $(document).ready(function()
+        {
+          //Do things here
+          
+          //$.post( url, data,success())
+
+
+            // this initializes the dialog (and uses some common options that I do)
+          
+          
+            $('#first_name').focusout(function() {
+                var first_name=$('#first_name').val().length
+                if (first_name <1)
+                    {
+                      
+                      $('#error_first_name').text('First name must not be empty');
+                    }
+                else {$('#error_first_name').text('');}
+                
+            })
+
+            $('#last_name').focusout(function() {
+                var last_name=$('#last_name').val().length
+                if (last_name <1)
+                    {
+                      
+                      $('#error_last_name').text('Last name must not be empty');
+                    }
+                else {$('#error_last_name').text('');}
+                
+            })
+
+            $('#username').focusout(function() {
+                var username=$('#username').val().length
+                if (username <1)
+                    {
+                      
+                      $('#error_username').text('Username must have atleast 4 character');
+                    }
+                else if (username>3) {$('#error_username').text('');}
+                
+            })
+
+            $('#email').focusout(function() {
+                var email=$('#email').val()
+                
+                if (email.indexOf("@") ==-1)
+                    {
+                      
+                      $('#error_email').text('email must contain @');
+                    }
+                else if (email.length <1) {$('#error_email').text('Email must not be empty');}
+
+                else {$('#error_email').text('');}
+                
+            })
+
+            $('#password').focusout(function() {
+                var password=$('#password').val().length
+                if (password <1)
+                    {
+                      
+                      $('#error_password').text('Password must not be empty');
+                    }
+                else if (password>0) {$('#error_password').text('');}
+                
+            })
+
+            $('#password_confirmation').focusout(function() {
+                var password_confirmation=$('#password_confirmation').val().length
+                var password_confirmation_val=$('#password_confirmation').val()
+                var password=$('#password').val()
+
+                if (password_confirmation <1)
+                    {
+                      
+                      $('#error_password_confirmation').text('Password confirmation must not be empty');
+                    }
+                
+                else if (password_confirmation_val !=password)
+                  {
+                    $('#error_password_confirmation').text("Password confirmation and Password didn't match");
+
+                  }
+                else 
+                  {
+                    $('#error_password_confirmation').text("");
+
+                  }
+                
+                
+          	})
+        
+          $('#register_button').click(function (event) {
+
+
+            var first_name=$('#first_name').val().length
+            var last_name=$('#last_name').val().length
+            var username=$('#username').val().length
+            var email=$('#email').val()
+            var password_confirmation=$('#password_confirmation').val().length
+            var password_confirmation_val=$('#password_confirmation').val()
+            var password=$('#password').val()
+            if (first_name <1)
+                {
+                  
+                  $('#error_first_name').text('First name must not be empty');
+                  event.preventDefault();
+                }
+
+            
+            else if (last_name <1)
+                {
+                  
+                  $('#error_last_name').text('Last name must not be empty');
+                  event.preventDefault();
+                }
+
+            else if (username <1)
+                    {
+                      
+                      $('#error_username').text('Username must have atleast 4 character');
+                      event.preventDefault();
+                    }
+
+                
+            else if (email.indexOf("@") ==-1)
+                {
+                  
+                  $('#error_email').text('email must contain @');
+                  event.preventDefault();
+                }
+            else if (email.length <1) 
+              {
+                $('#error_email').text('Email must not be empty');
+                event.preventDefault();
+
+              }
+            
+            
+            else if (password <1)
+                {
+                  
+                  $('#error_password').text('Password  must not be empty');
+                  event.preventDefault();
+                }
+            else if (password_confirmation <1)
+                {
+                  
+                  $('#error_password_confirmation').text('Password confirmation must not be empty');
+                  event.preventDefault();
+                }
+            
+            
+            else if (password_confirmation_val !=password)
+              {
+                $('#error_password_confirmation').text("Password confirmation and Password didn't match");
+                event.preventDefault();
+
+              }
+            
+            
+       
+            else {
+
+            
+
+            
+            $.post( 'registerOK.html',
+            $("#registerForm").serialize(),
+            function(data){
+            
+            });
+            return false;
+            }
+
+
+ 
+
+            });
+
+          
+
+         });
+      
+        </script>
+</head>
+<body>
+<div   class="container">
+
+<div id ="register_form"  class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3"  > 
+    <form  role="form" id="registerForm" method="post"> 
+      <h2>Please Sign Up <small>Small text </small></h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+                        <font color="red"><div id='error_first_name'></div></font>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+            <font color="red"><div id='error_last_name'></div></font>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username" tabindex="3">
+        <font color="red"><div id='error_username'></div></font>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+        <font color="red"><div id='error_email'></div></font>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+            <font color="red"><div id='error_password'></div></font>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+             <font color="red"><div id='error_password_confirmation'></div></font>
+            
+          </div>
+        </div>
+      </div>
+      
+
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><input id ="register_button" type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+        <div class="col-xs-6 col-md-6"><a href="#" id="signin" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+      </div>
+    </form>
+  </div>
+
+
+
+</div>
+
+
+</body>
+</html>

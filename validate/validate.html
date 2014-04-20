@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN"
+“http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Validate </title>
+
+
+
+
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="jquery.validate.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('#commentForm').validate();
+});
+
+
+
+
+</script>
+</head>
+<body>
+
+
+<form id="commentForm" >
+First Name: <input name="name" size="25" class="required" minlength="2" />
+<br />
+E-Mail: <input name="email" size="25" class="required email" />
+<br />
+URL: <input name="url" size="25" class="url" value="" />
+<br />
+Comment: <textarea id="ccomment" name="comment" cols="22"
+class="required"></textarea>
+<br />
+<input class="submit" type="submit" value="Submit"/>
+</form>
+
+
+
+
+
+
+
+
+</body>
+</html>
