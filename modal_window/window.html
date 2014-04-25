@@ -1,0 +1,112 @@
+
+<html>
+<head>
+<title>Modal Windows </title>
+
+
+
+
+<script type="text/javascript" src="jquery.js"></script>
+
+
+
+<script type="text/javascript" src= "jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css"/>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+//Your code goes here.
+
+$(function() {
+ 
+              $( "#dialog" ).dialog({
+                autoOpen: false,
+                resizable: true,
+                width: 500 ,
+                height: 400,
+                position:['middle',80],
+                
+                show: {
+                effect: "blind",
+                duration: 1000
+                },
+                hide: {
+                effect: "explode",
+                duration: 1000
+                },
+
+              });
+              $( "#opener" ).click(function() {
+                
+              $( "#dialog" ).dialog( "open" );
+             
+              });
+            });
+
+});
+</script>
+</head>
+<body>
+
+
+<a id="opener" href="#" >Click me</a>
+
+
+<div id="dialog"  title="Complete Your Pofile ">
+
+
+  
+      <p>Your registration is completed!!! Befor you log in, please fill information below.</p>
+      
+      <form id="finish_form"  method="post">
+        <label for="name">Academy: </label>
+       <input type="text" name="Academy" id="Academy" placeholder="Enter your Academy" >
+       
+        <br>
+        <label for="name">Belt: </label>
+        <div>
+           
+           <label >
+              <input type="radio" name="belt" id="White" 
+                 value="White" checked> White
+           </label>
+           <label >
+              <input type="radio" name="belt" id="Blue" 
+                 value="Blue"> Blue
+           </label>
+           <label >
+              <input type="radio" name="belt" id="Purple" 
+                 value="Purple"> Purple
+           </label>
+
+           <label>
+              <input type="radio" name="belt" id="Brown" 
+                 value="Brown"> Brown
+           </label>
+
+           <label>
+              <input type="radio" name="belt" id="Black" 
+                 value="Black"> Black
+           </label>
+          
+                
+             <br>
+               
+               <input id ="finish" type="submit" value="Finish"  >
+                
+               </form>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+</body>
+</html>
